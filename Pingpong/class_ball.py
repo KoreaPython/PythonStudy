@@ -10,7 +10,7 @@ class Ball(object):
 
     @property
     def x(self):
-        return self.x
+        return self._x
 
     @x.setter
     def x(self, value):
@@ -18,7 +18,7 @@ class Ball(object):
 
     @property
     def y(self):
-        return self.y
+        return self._y
 
     @y.setter
     def y(self, value):
@@ -26,7 +26,7 @@ class Ball(object):
 
     @property
     def r(self):
-        return self.r
+        return self._r
 
     @r.setter
     def r(self, value):
@@ -34,7 +34,4 @@ class Ball(object):
 
     #draw itself
     def draw(self, qp_evnt, qp):
-        x = 200
-        y = 100
-        r = 50
-        qp.drawEllipse(x, y, r, r)
+        qp.drawEllipse(self._x, self._y, self._r, self._r)

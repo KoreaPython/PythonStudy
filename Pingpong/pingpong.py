@@ -9,6 +9,7 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 
 import class_ball
+import random
 
 
 class Form(QtWidgets.QWidget):
@@ -21,7 +22,7 @@ class Form(QtWidgets.QWidget):
         self.timer.start(1000, self)
 
     def timerEvent(self, QTimerEvent):
-        pass
+        self.repaint()
 
 
     def init_all(self):
@@ -32,9 +33,15 @@ class Form(QtWidgets.QWidget):
         qp = QtGui.QPainter()
         qp.begin(self)
         #USER CODE
-        self.ball.draw(QPaintEvent, qp)
+        self.ball_moving(QPaintEvent, qp)
         qp.end()
 
+    def ball_moving(self, qp_event, qp):
+        self.ball.x = random.randrange(0, 640)
+        self.ball.y = random.randrange(0, 480)
+        self.ball.r = random.randrange(10, 200)
+        print(self.ball.x, self.ball.y, self.ball.r)
+        self.ball.draw(qp_event, qp)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
