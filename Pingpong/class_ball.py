@@ -16,6 +16,58 @@ class Ball(QtWidgets.QWidget):
         self._x = x
         self._y = y
         self._r = r
+        self._theta = 0.5
+        self._velocity = 5
+
+
+    @property
+    def x(self):
+        return self._x
+
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+
+    @property
+    def y(self):
+        return self._y
+
+
+    @y.setter
+    def y(self, value):
+        self._y = value
+
+
+    @property
+    def r(self):
+        return self._r
+
+
+    @r.setter
+    def r(self, value):
+        self._r = value
+
+
+    @property
+    def theta(self):
+        return self._theta
+
+
+    @theta.setter
+    def theta(self, value):
+        self._theta = value
+
+
+    @property
+    def velocity(self):
+        return self._velocity
+
+
+    @velocity.setter
+    def velocity(self, value):
+        self._velocity = value
 
 
     def paintEvent(self, QPaintEvent):

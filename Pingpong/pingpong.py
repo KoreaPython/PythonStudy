@@ -10,6 +10,7 @@ from PyQt5 import QtGui
 
 import class_ball
 import random
+import moving_helper
 
 
 class Form(QtWidgets.QWidget):
@@ -19,7 +20,7 @@ class Form(QtWidgets.QWidget):
 
         # Setting Timer
         self.timer = QtCore.QBasicTimer()
-        self.timer.start(1000, self)
+        self.timer.start(100, self)
 
         # New Frame
         self.frame = QtWidgets.QWidget(self)
@@ -28,6 +29,7 @@ class Form(QtWidgets.QWidget):
         self.frame.show()
 
         self.init_all()
+
 
 
     def timerEvent(self, QTimerEvent):
@@ -44,7 +46,8 @@ class Form(QtWidgets.QWidget):
 
 
     def ball_moving(self):
-        self.ball.move(random.randrange(0, 600), random.randrange(0, 380))
+        moving_helper.MovingHelper.movingToNext(self.ball)
+        self.ball.move(self.ball.x, self.ball.y)
 
 
 if __name__ == '__main__':
