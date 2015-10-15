@@ -4,20 +4,18 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 
-# class of Ball
-class Ball(QtWidgets.QWidget):
+import math
 
-    margin = 1
+# class of Figure
+class Figure(QtWidgets.QWidget):
 
 
-    def __init__(self, x, y, r, parent=None):
+    def __init__(self, x, y, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
-        self.setGeometry(x, y, r+self.margin, r+self.margin)
         self._x = x
         self._y = y
-        self._r = r
-        self._theta = 0.5
-        self._velocity = 5
+        self._theta = (math.pi/180)*45
+        self._velocity = 10
 
 
     @property
@@ -41,16 +39,6 @@ class Ball(QtWidgets.QWidget):
 
 
     @property
-    def r(self):
-        return self._r
-
-
-    @r.setter
-    def r(self, value):
-        self._r = value
-
-
-    @property
     def theta(self):
         return self._theta
 
@@ -70,9 +58,41 @@ class Ball(QtWidgets.QWidget):
         self._velocity = value
 
 
+    def paintEvent(self):
+        pass
+
+
+
+# class of Circle
+class Circle(Figure):
+
+    margin = 2
+
+
+    def __init__(self, x, y, r, parent=None):
+        # Figure.__init__(self, x, y, parent=self)
+        super(Circle, self).__init__(x, y, parent)
+        self.setGeometry(x, y, r+self.margin, r+self.margin)
+        self._x = x
+        self._y = y
+        self._r = r
+        self._theta = (math.pi/180)*45
+        self._velocity = 10
+
+
+    @property
+    def r(self):
+        return self._r
+
+
+    @r.setter
+    def r(self, value):
+        self._r = value
+
+
     def paintEvent(self, QPaintEvent):
         qp = QtGui.QPainter()
         qp.begin(self)
         qp.setPen(QtGui.QColor('black'))
-        qp.drawEllipse(0, 0, self._r, self._r)
+        qp.drawEllipse(1, 1, self._r, self._r)
         qp.end()

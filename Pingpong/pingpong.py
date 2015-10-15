@@ -8,7 +8,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 
-import class_ball
+from class_figure import Circle
 import random
 import moving_helper
 
@@ -20,7 +20,7 @@ class Form(QtWidgets.QWidget):
 
         # Setting Timer
         self.timer = QtCore.QBasicTimer()
-        self.timer.start(100, self)
+        self.timer.start(50, self)
 
         # New Frame
         self.frame = QtWidgets.QWidget(self)
@@ -42,7 +42,7 @@ class Form(QtWidgets.QWidget):
 
 
     def init_all(self):
-        self.ball = class_ball.Ball(0, 0, 20, self.frame)
+        self.ball = Circle(200, 200, 30, self.frame)
 
 
     def ball_moving(self):
