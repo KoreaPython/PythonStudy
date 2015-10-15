@@ -8,7 +8,9 @@ from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 
+from class_figure import Line
 from class_figure import Circle
+from class_figure import Rectangle
 import random
 import moving_helper
 
@@ -20,7 +22,7 @@ class Form(QtWidgets.QWidget):
 
         # Setting Timer
         self.timer = QtCore.QBasicTimer()
-        self.timer.start(50, self)
+        self.timer.start(500, self)
 
         # New Frame
         self.frame = QtWidgets.QWidget(self)
@@ -28,6 +30,7 @@ class Form(QtWidgets.QWidget):
         self.frame.setStyleSheet("background-color: yellow;")
         self.frame.show()
 
+        self.init_ring()
         self.init_all()
 
 
@@ -40,6 +43,9 @@ class Form(QtWidgets.QWidget):
     def checkCrash(self):
         pass
 
+
+    def init_ring(self):
+        self.ring = Rectangle(0, 0, 620, 400, self.frame)
 
     def init_all(self):
         self.ball = Circle(200, 200, 30, self.frame)
