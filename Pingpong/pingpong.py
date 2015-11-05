@@ -13,6 +13,7 @@ from class_figure import Circle
 from class_figure import Rectangle
 import random
 import moving_helper
+import crash_helper
 
 
 class Form(QtWidgets.QWidget):
@@ -22,7 +23,7 @@ class Form(QtWidgets.QWidget):
 
         # Setting Timer
         self.timer = QtCore.QBasicTimer()
-        self.timer.start(500, self)
+        self.timer.start(50, self)
 
         # New Frame
         self.frame = QtWidgets.QWidget(self)
@@ -41,14 +42,14 @@ class Form(QtWidgets.QWidget):
 
 
     def checkCrash(self):
-        pass
+        crash_helper.Crash.circle_in_rectangle(self.ball, self.ring)
 
 
     def init_ring(self):
         self.ring = Rectangle(0, 0, 620, 400, self.frame)
 
     def init_all(self):
-        self.ball = Circle(200, 200, 30, self.frame)
+        self.ball = Circle(400, 200, 100, self.frame)
 
 
     def ball_moving(self):

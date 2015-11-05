@@ -18,7 +18,7 @@ class Figure(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self, parent)
         self._x = x
         self._y = y
-        self._theta = (math.pi/180)*45
+        self._theta = (math.pi/180)*0
         self._velocity = 10
 
 
@@ -88,6 +88,13 @@ class Circle(Figure):
     @r.setter
     def r(self, value):
         self._r = value
+
+    def cX(self):
+        return self._x + (self._r/2)
+
+
+    def cY(self):
+        return self._y + (self._r/2)
 
 
     def paintEvent(self, QPaintEvent):
