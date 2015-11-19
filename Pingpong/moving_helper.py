@@ -18,11 +18,11 @@ class MovingHelper():
         :param obj: 이동시킬 오브젝트를 받는다
         :return:
         '''
-
         # x 좌표의 다음 위치 계산
         obj.x += obj.velocity * math.cos(obj.theta)
         # y 좌표의 다음 위치 계산
         obj.y += obj.velocity * math.sin(obj.theta)
+
 
         ''' Test Code
         # 화면에서 벗어나면 반대쪽에서 나타남

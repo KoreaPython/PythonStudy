@@ -18,8 +18,9 @@ class Figure(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self, parent)
         self._x = x
         self._y = y
-        self._theta = (math.pi/180)*0
+        self._theta = (math.pi/180)*220
         self._velocity = 10
+        self._degree = 220
 
 
     @property
@@ -49,7 +50,19 @@ class Figure(QtWidgets.QWidget):
 
     @theta.setter
     def theta(self, value):
-        self._theta = value
+        # value는 dgree 값이다
+        self._theta = (math.pi/180)*value
+
+    @property
+    def degree(self):
+        return self._degree
+
+
+    @degree.setter
+    def degree(self, value):
+        # value는 dgree 값이다
+        self._theta = (math.pi/180)*value
+        self._degree = value
 
 
     @property
